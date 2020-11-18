@@ -67,15 +67,17 @@ Please run the deployment scripts in the order below. Note, all scripts will nee
 Please read any notes for a given step before executing. 
 
 1. Database and Object Creation: All scripts for this section can be found in the "DB" folder
+
 	a. 1 MUSH Create Database 20201118
 	
-	Notes: 
-	i. To successfully create the database, the file location to store the primary and log needs to be inserted, as show below. I have left a sample paths in the script. However, please ensure there are changed based on preference of location storage. 
+	Notes:
+	
+	i. To successfully create the database, the file location to store the primary and log needs to be inserted, as show below. I have left a sample paths in the script. 		However, please ensure there are changed based on preference of location storage. 
 		
 		CREATE DATABASE [DEV_MUSHROOM]
 		 CONTAINMENT = NONE
 		 ON  PRIMARY 
-		( NAME = N'DEV_MUSHROOM', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\DEV_MUSHROOM.mdf' , SIZE = 139264KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+		( NAME = N'DEV_MUSHROOM', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\DEV_MUSHROOM.mdf' , SIZE = 139264KB , MAXSIZE UNLIMITED, FILEGROWTH = 65536KB )
 		 LOG ON 
 		( NAME = N'DEV_MUSHROOM_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\DEV_MUSHROOM_log.ldf' , SIZE = 139264KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
 		 WITH CATALOG_COLLATION = DATABASE_DEFAULT
@@ -84,37 +86,47 @@ Please read any notes for a given step before executing.
 	ii. This may be optional depending on your environment processes. If databases are created through the server admin, he/she/they may want to create the database using the wizard functionality. If this is the case, please ensure the name of the database is "DEV MUSHROOM" and all default settings are used. 
 		
 	b. 2 MUSH Create Model Objects 20201118
+	
 	Notes: 
-		i. This script creates the relational model objects and reporting data-mart. For context, all model objects (tables) are prefixed with "MOD " and reporting data-marts with "DM ". The rationale for the data-mart table is to provide a user friendly dataset for the field team to interact with. Removing the need for joins and transpositions. This also allows easier data loads/connections with reporting tools such as PowerBI. Both the Model and Data-Mart tables are populated as part of the ETL.
+	
+	i. This script creates the relational model objects and reporting data-mart. For context, all model objects (tables) are prefixed with "MOD " and reporting data-marts 
+	with "DM ". The rationale for the data-mart table is to provide a user friendly dataset for the field team to interact with. Removing the need for joins and 
+	transpositions. This also allows easier data loads/connections with reporting tools such as PowerBI. Both the Model and Data-Mart tables are populated as part of the ETL.
 		
 		
 	c. 3 MUSH Create ETL Procedures 20201118
+	
 	Notes:
-		ii. This script will create all the ETL procedures that will then be invoked in the section 2. 
+	
+	i. This script will create all the ETL procedures that will then be invoked in the section 2. 
 		
 		
 2. 	ETL: All scripts and data for this section can be found in the "ETL" folder
+
 	a. MUSH ETL Run 20201118
 	
 	Notes: 
-		i. The procedure within MUSH ETL Run 20201118 requires two parameter inputs in the following order:
-			a. The file location of the field research records
-			b. The file location of the attribute mappings. 
-			This file is provided in the "ETL" folder named "Mushroom Attributes 20201118.csv"
-			
-	I have left in examples of how the parameters inputs should look. Note, please ensure single quotations are used for each parameter input. 
 	
-	USE [DEV MUSHROOM]
+	i. The procedure within MUSH ETL Run 20201118 requires two parameter inputs in the following order:
+		a. The file location of the field research records
+		b. The file location of the attribute mappings. 
+		
+	****This file is provided in the "ETL" folder named "Mushroom Attributes 20201118.csv"****
+			
+	I have left in examples of how the parameters inputs should look. Note, please ensure single quotations are used for each parameter input.***
+	
+		USE [DEV MUSHROOM]
 
-	DECLARE	@return value int
+		DECLARE	@return value int
 
-	EXEC	@return value = [dbo].[ETL 00 ETL Start] 'C:\Sensyne Health\Assignment Senior Data Engn- agaricus-lepiota - send.csv', 'C:\Mushroom Attributes 2020118.csv'
+		EXEC	@return value = [dbo].[ETL 00 ETL Start] 'C:\Sensyne Health\Assignment Senior Data Engn- agaricus-lepiota - send.csv', 'C:\Mushroom Attributes 				2020118.csv'
 
-	SELECT	'Return Value' = @return value
+		SELECT	'Return Value' = @return value
 	
 	A successful run will return a value of 1
 	
 	Troubleshooting: 
+	
 	In the event of errors in the load, identified by a -1 return code, there are two options to identify the error:
 	
 	1. In the query execution results, go to messages and there will be a validation query that can be copied and ran showing to show errors in the load. 
