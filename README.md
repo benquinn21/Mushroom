@@ -42,18 +42,22 @@ Prior to running the deployment scripts in section, "Deployment", the following 
 	The correct permissions are required for the ability to create a database or any database objects. Please speak to your server admin to grant access, or alternatively, 	work with a colleague who has the appropriate permissions. 
 
  b. SQL Server Machine Learning Services/Advanced Analytics add-on
-	To be able to run query 2 of the analysis phase, SQL Server Machine Learning Services will need to be installed and external scripts activated. 
-	i. As an initial check to see if this is already in place, please run:
+	To be able to run query 2 of the analysis phase, SQL Server Machine Learning Services will need to be installed and external scripts activated.
+	
+i. As an initial check to see if this is already in place, please run:
 		
 		EXECUTE sp configure  'external scripts enabled'
 		
 If the run value is set to 1, then the ability to run external scripts is activated. 
-	ii. If it's not set to 1, please run the below query to attempt to activate external scripts:
+
+ii. If it's not set to 1, please run the below query to attempt to activate external scripts:
 
 		EXEC sp configure  'external scripts enabled', 1
 		RECONFIGURE WITH OVERRIDE
 		
-iii. If the above query in ii comes back with error stating that SQL Server Machine Learning Services/Advanced Analytics is not installed then 					please work with your server admin to install the correct package. Steps on how to do this can be found follow the below URL:							https://docs.microsoft.com/en-us/sql/machine-learning/install/sql-machine-learning-services-windows-install?view=sql-server-ver15
+iii. If the above query in (ii) comes back with error stating that SQL Server Machine Learning Services/Advanced Analytics is not installed then 				please work with your server admin to install the correct package. Steps on how to do this can be found follow the below URL:	#
+
+https://docs.microsoft.com/en-us/sql/machine-learning/install/sql-machine-learning-services-windows-install?view=sql-server-ver15
 		
 **Note, the ability to run queries in i and ii maybe denied due to permissions. 
 	
