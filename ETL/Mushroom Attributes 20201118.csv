@@ -1,0 +1,54 @@
+Attribute,Code,Value
+Edibility,P,Posionous
+Edibility,E,Edible
+Cap Surface,F,fibrous
+Cap Surface,G,grooves
+Cap Surface,Y,scaly
+Cap Surface,S,smooth
+Bruises,T,Yes
+Bruises,F,No
+Grill Spacing,C,Close
+Grill Spacing,D,Distant
+Grill Spacing,W,Crowded
+Grill Size,B,Broad
+Grill Size,N,Narrow
+Stalk Surface Below Ring,F,Fiborous
+Stalk Surface Below Ring,Y,scaly
+Stalk Surface Below Ring,K,Silky
+Stalk Surface Below Ring,S,smooth
+Veil Colour,N,Brown
+Veil Colour,O,Orange
+Veil Colour,W,White
+Veil Colour,Y,Yellow
+Ring Type,E,Eevanescent
+Ring Type,F,flaring
+Ring Type,L,large
+Ring Type,N,None
+Ring Type,P,Pendant
+Ring Type,S,Sheathing
+Ring Type,Z,Zone
+Grill Colour,K,Black
+Grill Colour,N,Brown
+Grill Colour,H,Chocolate
+Grill Colour,G,Grey
+Grill Colour,R,Green
+Grill Colour,O,Orange
+Grill Colour,P,Pink
+Grill Colour,U,Purple
+Grill Colour,E,Red
+Grill Colour,B,Buff
+Grill Colour,W,White
+Grill Colour,Y,Yellow
+Population,A,Abundant
+Population,C,Clustered
+Population,N,Numerous
+Population,S,Scattered
+Population,V,Serveral
+Population,Y,Solitary
+Habitat,G,Grasses
+Habitat,L,Leaves
+Habitat,M,Meadows
+Habitat,P,Paths
+Habitat,U,Urban
+Habitat,W,Waste
+Habitat,D,Wood
